@@ -5,7 +5,6 @@ This is for the Graveyard kit from kenney.nl.
 """
 
 import pygame
-import random
 import time
 
 from pygame.locals import (
@@ -19,6 +18,7 @@ from pygame.locals import (
     QUIT,
     K_f,
 )
+import secrets
 
 SCREEN_WIDTH = 1500
 SCREEN_HEIGHT = 1000
@@ -66,11 +66,11 @@ class Enemies(pygame.sprite.Sprite):
         self.surf.set_colorkey((255, 255, 255), RLEACCEL)
         self.rect = self.surf.get_rect(
             center=(
-                random.randint(SCREEN_WIDTH - 1, SCREEN_WIDTH + 1),
-                random.randint(0, SCREEN_HEIGHT),
+                secrets.SystemRandom().randint(SCREEN_WIDTH - 1, SCREEN_WIDTH + 1),
+                secrets.SystemRandom().randint(0, SCREEN_HEIGHT),
             )
         )
-        self.speed = random.randint(1, 5)
+        self.speed = secrets.SystemRandom().randint(1, 5)
 
     def update(self):
         self.rect.move_ip(-5, 0)
